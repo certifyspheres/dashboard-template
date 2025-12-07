@@ -74,115 +74,155 @@ npm run preview
 | Demo  | demo@demo.com     | demo123   |
 | User  | user@user.com     | user123   |
 
-## Project Structure
+## 📁 Project Structure
 
 ```
+dashboard-template/
+├── docs/                       # Documentation
+│   ├── CREDENTIALS.md         # Demo login credentials
+│   ├── QUICK_START.md         # Quick start guide
+│   ├── CUSTOMIZATION_GUIDE.md # Customization instructions
+│   ├── DEPLOYMENT.md          # Deployment guide
+│   ├── THEME_GUIDE.md         # Theme system guide
+│   └── MARKETPLACE_DESCRIPTION.md # Marketplace listing copy
 ├── src/
-│   ├── components/
-│   │   ├── Header.jsx          # Top navigation bar
-│   │   ├── Sidebar.jsx         # Side navigation menu
-│   │   └── StatCard.jsx        # Statistics card component
+│   ├── components/            # Reusable components
+│   │   ├── Layout.jsx        # Common layout wrapper
+│   │   ├── Header.jsx        # Top navigation
+│   │   ├── Sidebar.jsx       # Side navigation
+│   │   ├── Footer.jsx        # Footer component
+│   │   └── StatCard.jsx      # Statistics card
 │   ├── context/
-│   │   └── ThemeContext.jsx    # Theme management
-│   ├── pages/
-│   │   ├── LandingPage.jsx     # Marketing landing page
-│   │   ├── Login.jsx           # Login page
-│   │   ├── Register.jsx        # Registration page
-│   │   ├── Dashboard.jsx       # Main dashboard
-│   │   ├── Tables.jsx          # Data tables page
-│   │   ├── Charts.jsx          # Charts page
-│   │   └── Profile.jsx         # User profile page
-│   ├── App.jsx                 # Main app component
-│   ├── main.jsx               # Entry point
-│   └── index.css              # Global styles
-├── index.html
-├── package.json
-├── tailwind.config.js
-└── vite.config.js
+│   │   └── ThemeContext.jsx  # Theme state management
+│   ├── pages/                # Page components
+│   │   ├── LandingPage.jsx   # Marketing homepage
+│   │   ├── Login.jsx         # Authentication
+│   │   ├── Register.jsx      # User registration
+│   │   ├── Dashboard.jsx     # Main dashboard
+│   │   ├── Tables.jsx        # Data tables
+│   │   ├── Charts.jsx        # Data visualization
+│   │   ├── Profile.jsx       # User profile
+│   │   ├── Privacy.jsx       # Privacy policy
+│   │   └── Terms.jsx         # Terms of service
+│   ├── App.jsx               # Main app with routing
+│   ├── main.jsx              # Entry point
+│   └── index.css             # Global styles & themes
+├── public/                    # Static assets
+├── index.html                # HTML template
+├── package.json              # Dependencies
+├── vite.config.js            # Vite configuration
+├── tailwind.config.js        # Tailwind configuration
+├── vercel.json               # Vercel deployment config
+└── README.md                 # This file
 ```
 
-## Features Overview
+## 🎨 Theme System
 
-### Landing Page
-- Hero section with CTA buttons
-- Feature highlights
-- Pricing plans
-- Responsive navigation
-
-### Dashboard
-- 4 statistics cards with trend indicators
-- Sales overview line chart
-- Category distribution pie chart
-- Recent orders table
-- Real-time data updates
-
-### Tables
-- User management table
-- Search functionality
-- Filter and export options
-- Pagination
-- Edit and delete actions
-
-### Charts
-- Line chart for performance tracking
-- Bar chart for product comparison
-- Area chart for user activity
-- Pie chart for distribution
-- Radar chart for multi-dimensional data
-
-### Profile
-- User information display
-- Editable profile form
-- Activity statistics
-- Avatar upload
-
-### Theme System
-- 5 color themes (Blue, Green, Purple, Orange, Pink)
-- Dark/Light mode toggle (click sun/moon icon in header)
-- Color theme picker (click palette icon in header)
-- Persistent theme selection
-- CSS custom properties
+### Available Themes
+- **Blue** - Professional & Corporate (Default)
+- **Green** - Eco-friendly & Health
+- **Purple** - Creative & Modern
+- **Orange** - Energetic & Warm
+- **Pink** - Playful & Vibrant
 
 ### How to Change Themes
-1. **Color Theme:** Click the palette icon (🎨) in the top-right header
-2. **Dark/Light Mode:** Click the sun/moon icon in the top-right header
-3. Your preferences are saved automatically!
+1. **Color Theme:** Click the palette icon (🎨) in the header
+2. **Dark/Light Mode:** Click the sun/moon icon (☀️/🌙)
+3. Preferences are saved automatically!
 
-## Customization
+### Theme Features
+- ✅ 5 color options
+- ✅ Dark/Light mode
+- ✅ Persistent storage
+- ✅ Smooth transitions
+- ✅ Works on all pages
 
-### Changing Colors
-Click the palette icon in the header to choose from 5 pre-built color themes.
+## 📄 Pages Included
 
-### Adding New Pages
-1. Create a new component in `src/pages/`
-2. Add route in `src/App.jsx`
-3. Add navigation link in `src/components/Sidebar.jsx`
+| Page | Route | Description |
+|------|-------|-------------|
+| Landing | `/` | Marketing homepage with features & pricing |
+| Login | `/login` | Authentication with demo accounts |
+| Register | `/register` | User registration form |
+| Dashboard | `/dashboard` | Main admin panel with stats & charts |
+| Tables | `/tables` | User management with search & filters |
+| Charts | `/charts` | Data visualization (5 chart types) |
+| Profile | `/profile` | User profile management |
+| Privacy | `/privacy` | Privacy policy |
+| Terms | `/terms` | Terms of service |
 
-### Modifying Data
-Update the data arrays in each page component to display your own content.
+## 📚 Documentation
 
-## Browser Support
+Comprehensive documentation is available in the `/docs` directory:
 
-- Chrome (latest)
-- Firefox (latest)
-- Safari (latest)
-- Edge (latest)
+- **[Quick Start Guide](docs/QUICK_START.md)** - Get up and running in 5 minutes
+- **[Credentials](docs/CREDENTIALS.md)** - Demo login accounts
+- **[Customization Guide](docs/CUSTOMIZATION_GUIDE.md)** - How to customize everything
+- **[Theme Guide](docs/THEME_GUIDE.md)** - Complete theme system documentation
+- **[Deployment Guide](docs/DEPLOYMENT.md)** - Deploy to Vercel, Netlify, etc.
+- **[Marketplace Description](docs/MARKETPLACE_DESCRIPTION.md)** - Sales copy for listings
 
-## License
+## 🚀 Deployment
 
-This template is available for commercial use. Perfect for selling on:
-- Envato Market
-- ThemeForest
+### Deploy to Vercel (Recommended)
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/certifyspheres/dashboard-template)
+
+1. Click the button above or visit [vercel.com](https://vercel.com)
+2. Import the repository
+3. Deploy with one click
+4. Add custom domain (optional)
+
+See [Deployment Guide](docs/DEPLOYMENT.md) for detailed instructions.
+
+### Live Demo
+
+Visit the live demo: [https://dashboard-theme.certifysphere.com](https://dashboard-theme.certifysphere.com)
+
+## 🎯 Use Cases
+
+Perfect for:
+- ✅ SaaS applications
+- ✅ Admin panels
+- ✅ CRM systems
+- ✅ Analytics dashboards
+- ✅ E-commerce backends
+- ✅ Project management tools
+- ✅ Business intelligence apps
+
+## 🌐 Browser Support
+
+- ✅ Chrome (latest)
+- ✅ Firefox (latest)
+- ✅ Safari (latest)
+- ✅ Edge (latest)
+
+## 📝 License
+
+This template is available for commercial use. Perfect for:
+- Envato Market / ThemeForest
 - Creative Market
 - Your own website
+- Client projects
 
-## Support
+## 🙏 Credits
 
-For support and questions, please contact the developer.
+- **Created by:** [CertifySphere](https://www.certifysphere.com)
+- **Icons:** Lucide React
+- **Charts:** Recharts
+- **Images:** Unsplash
+- **UI Framework:** Tailwind CSS
 
-## Credits
+## 📞 Support
 
-- Icons: Lucide React
-- Charts: Recharts
-- Images: Unsplash
-- UI Framework: Tailwind CSS
+- **Documentation:** Check the `/docs` directory
+- **Issues:** [GitHub Issues](https://github.com/certifyspheres/dashboard-template/issues)
+- **Website:** [www.certifysphere.com](https://www.certifysphere.com)
+
+## ⭐ Show Your Support
+
+If you find this template useful, please give it a star on GitHub!
+
+---
+
+**Made with ❤️ by [CertifySphere](https://www.certifysphere.com)**
