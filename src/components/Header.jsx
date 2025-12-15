@@ -1,8 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Sun, Moon, Bell, Search, Settings, Palette } from 'lucide-react';
+import { Sun, Moon, Bell, Search, Settings, Palette, Menu } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
 
-const Header = () => {
+const Header = ({ toggleSidebar }) => {
   const { isDark, toggleTheme, colorTheme, changeColorTheme } = useTheme();
   const [showColorPicker, setShowColorPicker] = useState(false);
   const colorPickerRef = useRef(null);
@@ -28,9 +28,18 @@ const Header = () => {
   }, []);
 
   return (
-    <header className="bg-white dark:bg-gray-800 shadow-md h-16 fixed top-0 right-0 left-64 z-10">
-      <div className="flex items-center justify-between h-full px-6">
-        <div className="flex items-center flex-1 max-w-xl">
+    <header className="bg-white dark:bg-gray-800 shadow-md h-16 fixed top-0 right-0 left-0 lg:left-64 z-30">
+      <div className="flex items-center justify-between h-full px-4 lg:px-6">
+        {/* Mobile Menu Button */}
+        <button
+          onClick={toggleSidebar}
+          className="lg:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+        >
+          <Menu className="w-6 h-6 text-gray-600 dark:text-gray-300" />
+        </button>
+
+        {/* Search Bar */}
+        <div className="flex items-center flex-1 max-w-xl mx-4">
           <div className="relative w-full">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
             <input

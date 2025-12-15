@@ -4,9 +4,9 @@ import { Heart, Mail, Globe } from 'lucide-react';
 
 const Footer = () => {
   return (
-    <footer className="ml-64 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 py-6 px-8">
+    <footer className="lg:ml-64 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 py-6 px-4 lg:px-8">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
           {/* About Section */}
           <div>
             <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-3">AdminPro</h3>
@@ -82,9 +82,9 @@ const Footer = () => {
 
         {/* Bottom Bar */}
         <div className="pt-6 border-t border-gray-200 dark:border-gray-700">
-          <div className="flex flex-col md:flex-row justify-between items-center text-sm text-gray-600 dark:text-gray-400">
+          <div className="flex flex-col sm:flex-row justify-between items-center text-sm text-gray-600 dark:text-gray-400">
             <p>© 2024 AdminPro. All rights reserved.</p>
-            <p className="flex items-center mt-2 md:mt-0">
+            <p className="flex items-center mt-2 sm:mt-0">
               Made with <Heart className="w-4 h-4 mx-1 text-red-500 fill-current" /> by{' '}
               <a 
                 href="https://www.certifysphere.com/" 
