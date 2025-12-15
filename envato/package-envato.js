@@ -11,21 +11,32 @@ const AUTHOR = 'CertifySphere';
 const PACKAGE_DIR = `${PACKAGE_NAME}-v${VERSION}`;
 const ZIP_NAME = `${PACKAGE_NAME}-v${VERSION}.zip`;
 
+// Change to parent directory to access source files
+const ROOT_DIR = path.join(__dirname, '..');
+process.chdir(ROOT_DIR);
+
 console.log('🚀 Creating Envato ThemeForest Package...\n');
 
-// Clean up previous builds
-if (fs.existsSync(PACKAGE_DIR)) {
+// Clean up previous builds in envato directory
+const envatoPackageDir = path.join('envato', PACKAGE_DIR);
+const envatoZipPath = path.join('envato', ZIP_NAME);
+
+if (fs.existsSync(envatoPackageDir)) {
     console.log('🧹 Cleaning up previous build...');
-    execSync(`rm -rf ${PACKAGE_DIR}`);
+    execSync(`rm -rf "${envatoPackageDir}"`);
 }
 
-if (fs.existsSync(ZIP_NAME)) {
-    execSync(`rm -f ${ZIP_NAME}`);
+if (fs.existsSync(envatoZipPath)) {
+    execSync(`rm -f "${envatoZipPath}"`);
 }
+
+// Create package in envato directory
+const finalPackageDir = envatoPackageDir;
+const finalZipPath = envatoZipPath;
 
 // Create package directory
 console.log('📁 Creating package structure...');
-fs.mkdirSync(PACKAGE_DIR, { recursive: true });
+fs.mkdirSync(finalPackageDir, { recursive: true });
 
 // Files and directories to include
 const includeFiles = [
@@ -79,7 +90,7 @@ const excludeFiles = [
 console.log('📋 Copying source files...');
 includeFiles.forEach(file => {
     if (fs.existsSync(file)) {
-        const destPath = path.join(PACKAGE_DIR, file);
+        const destPath = path.join(finalPackageDir, file);
         
         if (fs.statSync(file).isDirectory()) {
             // Copy directory recursively
@@ -200,7 +211,7 @@ This template is licensed for commercial use. See LICENSE file for details.
 **Created by CertifySphere** | **Version ${VERSION}**
 `;
 
-fs.writeFileSync(path.join(PACKAGE_DIR, 'DOCUMENTATION.md'), mainDocContent);
+fs.writeFileSync(path.join(finalPackageDir, 'DOCUMENTATION.md'), mainDocContent);
 
 // Create installation guide
 const installGuideContent = `# Installation Guide - AdminPro Dashboard
@@ -302,7 +313,7 @@ If you need help:
 **Happy coding! 🚀**
 `;
 
-fs.writeFileSync(path.join(PACKAGE_DIR, 'INSTALLATION.md'), installGuideContent);
+fs.writeFileSync(path.join(finalPackageDir, 'INSTALLATION.md'), installGuideContent);
 
 // Create changelog
 const changelogContent = `# Changelog - AdminPro Dashboard
@@ -387,7 +398,7 @@ const changelogContent = `# Changelog - AdminPro Dashboard
 **Created by CertifySphere**
 `;
 
-fs.writeFileSync(path.join(PACKAGE_DIR, 'CHANGELOG.md'), changelogContent);
+fs.writeFileSync(path.join(finalPackageDir, 'CHANGELOG.md'), changelogContent);
 
 // Create license file
 const licenseContent = `# License - AdminPro Dashboard Template
@@ -424,11 +435,11 @@ This template is provided "as is" without warranty of any kind.
 **Copyright © 2024 CertifySphere. All rights reserved.**
 `;
 
-fs.writeFileSync(path.join(PACKAGE_DIR, 'LICENSE.md'), licenseContent);
+fs.writeFileSync(path.join(finalPackageDir, 'LICENSE.md'), licenseContent);
 
 // Update package.json for customer
 console.log('📦 Updating package.json...');
-const packageJsonPath = path.join(PACKAGE_DIR, 'package.json');
+const packageJsonPath = path.join(finalPackageDir, 'package.json');
 const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
 
 // Update package.json with customer-friendly information
@@ -594,12 +605,12 @@ Contains preview images for documentation and marketing purposes.
 **Happy coding! 🚀**
 `;
 
-fs.writeFileSync(path.join(PACKAGE_DIR, 'FILE_STRUCTURE.md'), fileStructureContent);
+fs.writeFileSync(path.join(finalPackageDir, 'FILE_STRUCTURE.md'), fileStructureContent);
 
 // Build the project
 console.log('🏗️  Building production version...');
 try {
-    execSync('npm run build', { cwd: PACKAGE_DIR, stdio: 'inherit' });
+    execSync('npm run build', { cwd: finalPackageDir, stdio: 'inherit' });
     console.log('   ✅ Build successful');
 } catch (error) {
     console.log('   ⚠️  Build failed, but package will still be created');
@@ -607,16 +618,16 @@ try {
 
 // Create ZIP file
 console.log('📦 Creating ZIP package...');
-execSync(`zip -r "${ZIP_NAME}" "${PACKAGE_DIR}" -x "*/node_modules/*" "*/.git/*" "*/.DS_Store"`, { stdio: 'inherit' });
+execSync(`zip -r "${finalZipPath}" "${finalPackageDir}" -x "*/node_modules/*" "*/.git/*" "*/.DS_Store"`, { stdio: 'inherit' });
 
 // Get file size
-const stats = fs.statSync(ZIP_NAME);
+const stats = fs.statSync(finalZipPath);
 const fileSizeInMB = (stats.size / (1024 * 1024)).toFixed(2);
 
 console.log('\n🎉 Package created successfully!');
-console.log(`📦 Package: ${ZIP_NAME}`);
+console.log(`📦 Package: ${finalZipPath}`);
 console.log(`📏 Size: ${fileSizeInMB} MB`);
-console.log(`📁 Directory: ${PACKAGE_DIR}`);
+console.log(`📁 Directory: ${finalPackageDir}`);
 
 // Create package info
 const packageInfo = {
@@ -650,12 +661,12 @@ function countFiles(dir, category) {
     return count;
 }
 
-packageInfo.files.source = countFiles(path.join(PACKAGE_DIR, 'src'), 'source');
-packageInfo.files.screenshots = countFiles(path.join(PACKAGE_DIR, 'docs/screenshots'), 'screenshots');
-packageInfo.files.documentation = fs.readdirSync(PACKAGE_DIR).filter(f => f.endsWith('.md')).length;
+packageInfo.files.source = countFiles(path.join(finalPackageDir, 'src'), 'source');
+packageInfo.files.screenshots = countFiles(path.join(finalPackageDir, 'docs/screenshots'), 'screenshots');
+packageInfo.files.documentation = fs.readdirSync(finalPackageDir).filter(f => f.endsWith('.md')).length;
 packageInfo.files.total = packageInfo.files.source + packageInfo.files.documentation + packageInfo.files.screenshots;
 
-fs.writeFileSync(`${PACKAGE_NAME}-v${VERSION}-info.json`, JSON.stringify(packageInfo, null, 2));
+fs.writeFileSync(path.join('envato', `${PACKAGE_NAME}-v${VERSION}-info.json`), JSON.stringify(packageInfo, null, 2));
 
 console.log('\n📊 Package Statistics:');
 console.log(`   📄 Total Files: ${packageInfo.files.total}`);

@@ -1,0 +1,45 @@
+{
+  "name": "adminpro-dashboard-template",
+  "version": "1.2.0",
+  "description": "Professional Admin Dashboard Template - React, Vite, Tailwind CSS",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.0",
+    "recharts": "^2.10.3",
+    "lucide-react": "^0.294.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.43",
+    "@types/react-dom": "^18.2.17",
+    "@vitejs/plugin-react": "^4.2.1",
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.32",
+    "tailwindcss": "^3.3.6",
+    "vite": "^5.0.8"
+  },
+  "author": "CertifySphere <support@certifysphere.com>",
+  "license": "Commercial",
+  "homepage": "https://www.certifysphere.com/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/certifyspheres/dashboard-template.git"
+  },
+  "keywords": [
+    "react",
+    "dashboard",
+    "admin",
+    "template",
+    "tailwind",
+    "vite",
+    "responsive",
+    "dark-mode",
+    "charts",
+    "saas"
+  ]
+}
