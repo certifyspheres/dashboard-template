@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Mail, Lock, Eye, EyeOff } from 'lucide-react';
+import { trackLogin, trackPageView } from '../utils/analytics';
 
 const Login = ({ setIsAuthenticated }) => {
   const [email, setEmail] = useState('');
@@ -13,16 +14,19 @@ const Login = ({ setIsAuthenticated }) => {
     
     // Dummy accounts for demo
     const validAccounts = [
-      { email: 'admin@admin.com', password: 'admin123' },
-      { email: 'demo@demo.com', password: 'demo123' },
-      { email: 'user@user.com', password: 'user123' }
+      { email: 'admin@admin.com', password: 'admin123', type: 'admin' },
+      { email: 'demo@demo.com', password: 'demo123', type: 'demo' },
+      { email: 'user@user.com', password: 'user123', type: 'user' }
     ];
     
-    const isValid = validAccounts.some(
+    const validAccount = validAccounts.find(
       account => account.email === email && account.password === password
     );
     
-    if (isValid) {
+    if (validAccount) {
+      // Track successful login
+      trackLogin('email', validAccount.type);
+      
       localStorage.setItem('isAuthenticated', 'true');
       localStorage.setItem('userEmail', email);
       setIsAuthenticated(true);

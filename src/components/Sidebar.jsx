@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { LayoutDashboard, Table2, BarChart3, User, LogOut, X } from 'lucide-react';
+import { trackNavigation, trackEvent } from '../utils/analytics';
 
 const Sidebar = ({ setIsAuthenticated, isOpen, setIsOpen }) => {
   const location = useLocation();
@@ -13,13 +14,20 @@ const Sidebar = ({ setIsAuthenticated, isOpen, setIsOpen }) => {
   ];
 
   const handleLogout = () => {
+    // Track logout event
+    trackEvent('logout', 'authentication', 'sidebar_logout');
+    
     localStorage.removeItem('isAuthenticated');
     localStorage.removeItem('userEmail');
     setIsAuthenticated(false);
     window.location.href = '/';
   };
 
-  const handleLinkClick = () => {
+  const handleLinkClick = (path) => {
+    // Track navigation
+    const pageName = path.replace('/', '') || 'dashboard';
+    trackNavigation(pageName, 'sidebar');
+    
     // Close mobile menu when link is clicked
     if (setIsOpen) {
       setIsOpen(false);
@@ -63,7 +71,7 @@ const Sidebar = ({ setIsAuthenticated, isOpen, setIsOpen }) => {
               <Link
                 key={item.path}
                 to={item.path}
-                onClick={handleLinkClick}
+                onClick={() => handleLinkClick(item.path)}
                 className={`flex items-center px-6 py-3 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors ${
                   isActive ? 'bg-primary text-white hover:bg-primary' : ''
                 }`}

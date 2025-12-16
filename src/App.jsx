@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import { trackPageView } from './utils/analytics';
 import { ThemeProvider } from './context/ThemeContext';
+import AnalyticsTracker from './components/AnalyticsTracker';
 import LandingPage from './pages/LandingPage';
 import Login from './pages/Login';
 import Register from './pages/Register';
@@ -26,6 +28,7 @@ function App() {
   return (
     <ThemeProvider>
       <Router>
+        <AnalyticsTracker />
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/login" element={<Login setIsAuthenticated={setIsAuthenticated} />} />

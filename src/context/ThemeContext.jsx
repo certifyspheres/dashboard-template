@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import { trackThemeChange } from '../utils/analytics';
 
 const ThemeContext = createContext();
 
@@ -30,7 +31,12 @@ export const ThemeProvider = ({ children }) => {
   }, []);
 
   const toggleTheme = () => {
+    const newTheme = !isDark ? 'dark' : 'light';
     setIsDark(!isDark);
+    
+    // Track theme change
+    trackThemeChange(newTheme, 'mode');
+    
     if (!isDark) {
       document.documentElement.classList.add('dark');
       localStorage.setItem('theme', 'dark');
@@ -41,6 +47,9 @@ export const ThemeProvider = ({ children }) => {
   };
 
   const changeColorTheme = (color) => {
+    // Track color theme change
+    trackThemeChange(color, 'color');
+    
     setColorTheme(color);
     document.documentElement.setAttribute('data-theme', color);
     localStorage.setItem('colorTheme', color);
