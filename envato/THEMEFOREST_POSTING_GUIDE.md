@@ -6,12 +6,12 @@
 
 **Item Name:**
 ```
-AdminPro - Professional React Admin Dashboard Template
+AdminPro - Professional React Admin Dashboard Template v1.3.0
 ```
 
 **Short Description (160 characters max):**
 ```
-Professional React admin dashboard with 5 themes, dark mode, responsive design, charts & authentication. Built with Vite & Tailwind CSS.
+Professional React admin dashboard with 12 pages, analytics, user management, settings panel & 5 themes. Built with React 18 & Tailwind CSS.
 ```
 
 **Category:**
@@ -21,15 +21,16 @@ Site Templates > Admin Templates
 
 **Tags (12 max):**
 ```
-react, dashboard, admin, template, responsive, dark-mode, tailwind, vite, charts, tables, authentication, saas
+react, dashboard, admin, analytics, user-management, settings, responsive, dark-mode, tailwind, vite, charts, saas
 ```
 
-**Attributes:**
+### **Attributes:**
 - **Compatible Browsers:** IE11, Firefox, Safari, Opera, Chrome, Edge
 - **Software Version:** React 18.x
 - **Files Included:** JavaScript JS, HTML, CSS
 - **Layout:** Responsive
 - **Framework:** React
+- **License:** Envato Standard License
 
 ---
 
@@ -209,7 +210,7 @@ Style: Modern, minimal, professional
                 <li>6 months updates</li>
                 <li>Installation help</li>
                 <li>Documentation</li>
-                <li>Email support</li>
+                <li>Envato standard license</li>
             </ul>
         </div>
     </div>

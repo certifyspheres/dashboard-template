@@ -1,6 +1,6 @@
 {
   "name": "adminpro-dashboard-template",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "Professional Admin Dashboard Template - React, Vite, Tailwind CSS",
   "scripts": {
     "dev": "vite",
@@ -24,7 +24,7 @@
     "vite": "^5.0.8"
   },
   "author": "CertifySphere <support@certifysphere.com>",
-  "license": "Commercial",
+  "license": "SEE LICENSE IN https://themeforest.net/licenses",
   "homepage": "https://www.certifysphere.com/",
   "repository": {
     "type": "git",

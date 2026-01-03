@@ -6,7 +6,7 @@ const { execSync } = require('child_process');
 
 // Configuration
 const PACKAGE_NAME = 'AdminPro-Dashboard-Template';
-const VERSION = '1.2.0';
+const VERSION = '1.3.0';
 const AUTHOR = 'CertifySphere';
 const PACKAGE_DIR = `${PACKAGE_NAME}-v${VERSION}`;
 const ZIP_NAME = `${PACKAGE_NAME}-v${VERSION}.zip`;
@@ -204,7 +204,7 @@ For support and questions:
 
 ## 📄 License
 
-This template is licensed for commercial use. See LICENSE file for details.
+This template uses Envato's standard license terms. See ThemeForest license for details.
 
 ---
 
@@ -400,42 +400,7 @@ const changelogContent = `# Changelog - AdminPro Dashboard
 
 fs.writeFileSync(path.join(finalPackageDir, 'CHANGELOG.md'), changelogContent);
 
-// Create license file
-const licenseContent = `# License - AdminPro Dashboard Template
-
-## Commercial License
-
-This template is licensed for commercial use on Envato ThemeForest.
-
-### What You Can Do
-✅ Use in unlimited personal and commercial projects
-✅ Modify and customize the code
-✅ Create derivative works
-✅ Use for client projects
-✅ Sell websites built with this template
-
-### What You Cannot Do
-❌ Resell or redistribute the template itself
-❌ Share the source code publicly
-❌ Create competing templates using this code
-❌ Remove copyright notices
-
-### Attribution
-Please keep the "Created by CertifySphere" attribution in the footer.
-
-### Support
-- Email: support@certifysphere.com
-- Website: https://www.certifysphere.com/
-
-### Disclaimer
-This template is provided "as is" without warranty of any kind.
-
----
-
-**Copyright © 2024 CertifySphere. All rights reserved.**
-`;
-
-fs.writeFileSync(path.join(finalPackageDir, 'LICENSE.md'), licenseContent);
+// Note: Using Envato's standard license - no custom license file needed
 
 // Update package.json for customer
 console.log('📦 Updating package.json...');
@@ -447,7 +412,7 @@ packageJson.name = 'adminpro-dashboard-template';
 packageJson.version = VERSION;
 packageJson.description = 'Professional Admin Dashboard Template - React, Vite, Tailwind CSS';
 packageJson.author = 'CertifySphere <support@certifysphere.com>';
-packageJson.license = 'Commercial';
+packageJson.license = 'SEE LICENSE IN https://themeforest.net/licenses';
 packageJson.homepage = 'https://www.certifysphere.com/';
 packageJson.repository = {
     type: 'git',
@@ -514,7 +479,7 @@ AdminPro-Dashboard-Template-v${VERSION}/
 ├── 📄 CUSTOMIZATION_GUIDE.md     # Customization
 ├── 📄 RESPONSIVE_DESIGN.md       # Mobile guide
 ├── 📄 CHANGELOG.md               # Version history
-└── 📄 LICENSE.md                 # License terms
+└── 📄 FILE_STRUCTURE.md          # File organization guide
 \`\`\`
 
 ## 🎯 Key Files
@@ -571,7 +536,6 @@ Contains preview images for documentation and marketing purposes.
 
 ### Reference
 - **CHANGELOG.md** - Version history
-- **LICENSE.md** - License terms
 - **FILE_STRUCTURE.md** - This file
 
 ## 🎨 Styling System
@@ -690,5 +654,5 @@ console.log('   ✅ Demo credentials provided');
 console.log('   ✅ Responsive design');
 console.log('   ✅ Modern tech stack');
 console.log('   ✅ Professional screenshots');
-console.log('   ✅ License file included');
+console.log('   ✅ Envato standard license used');
 console.log('   ✅ Changelog provided');

@@ -2,9 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Heart, Mail, Globe } from 'lucide-react';
 
-const Footer = () => {
+const Footer = ({ sidebarCollapsed }) => {
   return (
-    <footer className="lg:ml-64 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 py-6 px-4 lg:px-8">
+    <footer className="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 py-6 px-4 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
           {/* About Section */}
@@ -36,6 +36,16 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
+                <Link to="/analytics" className="text-gray-600 dark:text-gray-400 hover:text-primary transition-colors">
+                  Analytics
+                </Link>
+              </li>
+              <li>
+                <Link to="/users" className="text-gray-600 dark:text-gray-400 hover:text-primary transition-colors">
+                  Users
+                </Link>
+              </li>
+              <li>
                 <Link to="/tables" className="text-gray-600 dark:text-gray-400 hover:text-primary transition-colors">
                   Tables
                 </Link>
@@ -46,8 +56,8 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/profile" className="text-gray-600 dark:text-gray-400 hover:text-primary transition-colors">
-                  Profile
+                <Link to="/settings" className="text-gray-600 dark:text-gray-400 hover:text-primary transition-colors">
+                  Settings
                 </Link>
               </li>
             </ul>

@@ -84,8 +84,8 @@ For support and questions:
 
 ## 📄 License
 
-This template is licensed for commercial use. See LICENSE file for details.
+This template uses Envato's standard license terms. See ThemeForest license for details.
 
 ---
 
-**Created by CertifySphere** | **Version 1.2.0**
+**Created by CertifySphere** | **Version 1.3.0**

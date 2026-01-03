@@ -3,7 +3,7 @@
 ## 📁 Project Structure
 
 ```
-AdminPro-Dashboard-Template-v1.2.0/
+AdminPro-Dashboard-Template-v1.3.0/
 ├── 📁 src/                          # Source code
 │   ├── 📁 components/               # React components
 │   │   ├── Header.jsx              # Top navigation
@@ -42,7 +42,7 @@ AdminPro-Dashboard-Template-v1.2.0/
 ├── 📄 CUSTOMIZATION_GUIDE.md     # Customization
 ├── 📄 RESPONSIVE_DESIGN.md       # Mobile guide
 ├── 📄 CHANGELOG.md               # Version history
-└── 📄 LICENSE.md                 # License terms
+└── 📄 FILE_STRUCTURE.md          # File organization guide
 ```
 
 ## 🎯 Key Files
@@ -99,7 +99,6 @@ Contains preview images for documentation and marketing purposes.
 
 ### Reference
 - **CHANGELOG.md** - Version history
-- **LICENSE.md** - License terms
 - **FILE_STRUCTURE.md** - This file
 
 ## 🎨 Styling System

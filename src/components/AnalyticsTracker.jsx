@@ -21,9 +21,12 @@ const getPageTitle = (pathname) => {
     '/login': 'Login',
     '/register': 'Register',
     '/dashboard': 'Dashboard',
+    '/analytics': 'Analytics',
+    '/users': 'Users',
     '/tables': 'Tables',
     '/charts': 'Charts',
     '/profile': 'Profile',
+    '/settings': 'Settings',
     '/privacy': 'Privacy Policy',
     '/terms': 'Terms of Service'
   };

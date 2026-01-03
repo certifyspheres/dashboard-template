@@ -1,16 +1,19 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { LayoutDashboard, Table2, BarChart3, User, LogOut, X } from 'lucide-react';
+import { LayoutDashboard, Table2, BarChart3, User, LogOut, X, Users, Settings, TrendingUp } from 'lucide-react';
 import { trackNavigation, trackEvent } from '../utils/analytics';
 
-const Sidebar = ({ setIsAuthenticated, isOpen, setIsOpen }) => {
+const Sidebar = ({ setIsAuthenticated, isOpen, setIsOpen, isCollapsed }) => {
   const location = useLocation();
 
   const menuItems = [
     { path: '/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
+    { path: '/analytics', icon: TrendingUp, label: 'Analytics' },
+    { path: '/users', icon: Users, label: 'Users' },
     { path: '/tables', icon: Table2, label: 'Tables' },
     { path: '/charts', icon: BarChart3, label: 'Charts' },
     { path: '/profile', icon: User, label: 'Profile' },
+    { path: '/settings', icon: Settings, label: 'Settings' },
   ];
 
   const handleLogout = () => {
@@ -46,14 +49,19 @@ const Sidebar = ({ setIsAuthenticated, isOpen, setIsOpen }) => {
 
       {/* Sidebar */}
       <div className={`
-        fixed left-0 top-0 h-full bg-white dark:bg-gray-800 shadow-lg z-50 transition-transform duration-300 ease-in-out
-        w-64
+        fixed left-0 top-0 h-full bg-white dark:bg-gray-800 shadow-lg z-50 transition-all duration-300 ease-in-out
+        ${isCollapsed ? 'w-20' : 'w-64'}
         lg:translate-x-0
         ${isOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
       `}>
-        {/* Mobile Close Button */}
-        <div className="flex items-center justify-between p-6 lg:justify-start">
-          <h1 className="text-2xl font-bold text-primary">AdminPro</h1>
+        {/* Header */}
+        <div className="flex items-center justify-between p-6 lg:justify-center">
+          {!isCollapsed && (
+            <h1 className="text-2xl font-bold text-primary">AdminPro</h1>
+          )}
+          {isCollapsed && (
+            <h1 className="text-2xl font-bold text-primary">AP</h1>
+          )}
           <button
             onClick={() => setIsOpen(false)}
             className="lg:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
@@ -72,22 +80,38 @@ const Sidebar = ({ setIsAuthenticated, isOpen, setIsOpen }) => {
                 key={item.path}
                 to={item.path}
                 onClick={() => handleLinkClick(item.path)}
-                className={`flex items-center px-6 py-3 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors ${
+                className={`flex items-center px-6 py-3 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors group relative ${
                   isActive ? 'bg-primary text-white hover:bg-primary' : ''
                 }`}
+                title={isCollapsed ? item.label : ''}
               >
-                <Icon className="w-5 h-5 mr-3" />
-                <span>{item.label}</span>
+                <Icon className="w-5 h-5 mr-3 flex-shrink-0" />
+                {!isCollapsed && <span>{item.label}</span>}
+                
+                {/* Tooltip for collapsed state */}
+                {isCollapsed && (
+                  <div className="absolute left-full ml-2 px-2 py-1 bg-gray-900 dark:bg-gray-700 text-white text-sm rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-50">
+                    {item.label}
+                  </div>
+                )}
               </Link>
             );
           })}
           
           <button
             onClick={handleLogout}
-            className="flex items-center w-full px-6 py-3 text-gray-700 dark:text-gray-200 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors mt-4"
+            className="flex items-center w-full px-6 py-3 text-gray-700 dark:text-gray-200 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors mt-4 group relative"
+            title={isCollapsed ? 'Logout' : ''}
           >
-            <LogOut className="w-5 h-5 mr-3" />
-            <span>Logout</span>
+            <LogOut className="w-5 h-5 mr-3 flex-shrink-0" />
+            {!isCollapsed && <span>Logout</span>}
+            
+            {/* Tooltip for collapsed state */}
+            {isCollapsed && (
+              <div className="absolute left-full ml-2 px-2 py-1 bg-gray-900 dark:bg-gray-700 text-white text-sm rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-50">
+                Logout
+              </div>
+            )}
           </button>
         </nav>
       </div>

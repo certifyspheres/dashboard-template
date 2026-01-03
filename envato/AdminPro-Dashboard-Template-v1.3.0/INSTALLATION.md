@@ -13,7 +13,7 @@ Extract the downloaded ZIP file to your desired location.
 
 ### Step 2: Install Dependencies
 ```bash
-cd AdminPro-Dashboard-Template-v1.2.0
+cd AdminPro-Dashboard-Template-v1.3.0
 npm install
 ```
 

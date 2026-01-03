@@ -1,13 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import { trackPageView } from './utils/analytics';
 import { ThemeProvider } from './context/ThemeContext';
+import AnalyticsTracker from './components/AnalyticsTracker';
 import LandingPage from './pages/LandingPage';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
+import Analytics from './pages/Analytics';
+import Users from './pages/Users';
 import Tables from './pages/Tables';
 import Charts from './pages/Charts';
 import Profile from './pages/Profile';
+import Settings from './pages/Settings';
 import Privacy from './pages/Privacy';
 import Terms from './pages/Terms';
 
@@ -26,6 +31,7 @@ function App() {
   return (
     <ThemeProvider>
       <Router>
+        <AnalyticsTracker />
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/login" element={<Login setIsAuthenticated={setIsAuthenticated} />} />
@@ -33,9 +39,12 @@ function App() {
           <Route path="/privacy" element={<ProtectedRoute><Privacy setIsAuthenticated={setIsAuthenticated} /></ProtectedRoute>} />
           <Route path="/terms" element={<ProtectedRoute><Terms setIsAuthenticated={setIsAuthenticated} /></ProtectedRoute>} />
           <Route path="/dashboard" element={<ProtectedRoute><Dashboard setIsAuthenticated={setIsAuthenticated} /></ProtectedRoute>} />
+          <Route path="/analytics" element={<ProtectedRoute><Analytics setIsAuthenticated={setIsAuthenticated} /></ProtectedRoute>} />
+          <Route path="/users" element={<ProtectedRoute><Users setIsAuthenticated={setIsAuthenticated} /></ProtectedRoute>} />
           <Route path="/tables" element={<ProtectedRoute><Tables setIsAuthenticated={setIsAuthenticated} /></ProtectedRoute>} />
           <Route path="/charts" element={<ProtectedRoute><Charts setIsAuthenticated={setIsAuthenticated} /></ProtectedRoute>} />
           <Route path="/profile" element={<ProtectedRoute><Profile setIsAuthenticated={setIsAuthenticated} /></ProtectedRoute>} />
+          <Route path="/settings" element={<ProtectedRoute><Settings setIsAuthenticated={setIsAuthenticated} /></ProtectedRoute>} />
         </Routes>
       </Router>
     </ThemeProvider>

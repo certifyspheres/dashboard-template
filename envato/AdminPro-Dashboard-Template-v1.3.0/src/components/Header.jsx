@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Sun, Moon, Bell, Search, Settings, Palette, Menu } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
 
-const Header = ({ toggleSidebar }) => {
+const Header = ({ toggleSidebar, toggleSidebarCollapse, sidebarCollapsed }) => {
   const { isDark, toggleTheme, colorTheme, changeColorTheme } = useTheme();
   const [showColorPicker, setShowColorPicker] = useState(false);
   const colorPickerRef = useRef(null);
@@ -28,12 +28,21 @@ const Header = ({ toggleSidebar }) => {
   }, []);
 
   return (
-    <header className="bg-white dark:bg-gray-800 shadow-md h-16 fixed top-0 right-0 left-0 lg:left-64 z-30">
+    <header className={`bg-white dark:bg-gray-800 shadow-md h-16 sticky top-0 z-30 transition-all duration-300`}>
       <div className="flex items-center justify-between h-full px-4 lg:px-6">
         {/* Mobile Menu Button */}
         <button
           onClick={toggleSidebar}
           className="lg:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+        >
+          <Menu className="w-6 h-6 text-gray-600 dark:text-gray-300" />
+        </button>
+
+        {/* Desktop Sidebar Toggle Button */}
+        <button
+          onClick={toggleSidebarCollapse}
+          className="hidden lg:block p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+          title={sidebarCollapsed ? 'Expand Sidebar' : 'Collapse Sidebar'}
         >
           <Menu className="w-6 h-6 text-gray-600 dark:text-gray-300" />
         </button>

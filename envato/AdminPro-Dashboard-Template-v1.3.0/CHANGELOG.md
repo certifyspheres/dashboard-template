@@ -1,6 +1,6 @@
 # Changelog - AdminPro Dashboard
 
-## Version 1.2.0 (December 2024)
+## Version 1.3.0 (December 2024)
 
 ### ✨ New Features
 - **Complete Dashboard**: 9 pages including landing, auth, dashboard, tables, charts, profile, legal
