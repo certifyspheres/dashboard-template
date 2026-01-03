@@ -26,10 +26,6 @@
   "author": "CertifySphere <support@certifysphere.com>",
   "license": "SEE LICENSE IN https://themeforest.net/licenses",
   "homepage": "https://www.certifysphere.com/",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/certifyspheres/dashboard-template.git"
-  },
   "keywords": [
     "react",
     "dashboard",

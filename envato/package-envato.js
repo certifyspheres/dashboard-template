@@ -414,10 +414,6 @@ packageJson.description = 'Professional Admin Dashboard Template - React, Vite, 
 packageJson.author = 'CertifySphere <support@certifysphere.com>';
 packageJson.license = 'SEE LICENSE IN https://themeforest.net/licenses';
 packageJson.homepage = 'https://www.certifysphere.com/';
-packageJson.repository = {
-    type: 'git',
-    url: 'https://github.com/certifyspheres/dashboard-template.git'
-};
 packageJson.keywords = [
     'react',
     'dashboard',
